@@ -1,11 +1,11 @@
 name: CMake
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  PRJ_NAME: "otu_algo_hw" # name without spaces
+  PRJ_NAME: "otus_algo_hw" # name without spaces
   PRJ_VERSION_MAJOR: 0
   PRJ_VERSION_MINOR: 1
   PRJ_VERSION_PATCH: ${{ github.run_number }}
-  PRJ_DESCRIPTION: "allocator_for_standard_and_custom_containers" # description without spaces
+  PRJ_DESCRIPTION: "otus_aloritms_and_data_structures_course_homework" # description without spaces
   PRJ_HOMEPAGE_URL: "${{ github.server_url }}//${{ github.repository }}"
   PRJ_CMAKE_MIN_VERSION: 3.2
   EMAIL_CONTACT: dmitrii.lozovoi@yandex.ru
