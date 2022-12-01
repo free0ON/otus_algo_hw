@@ -8,13 +8,12 @@ set(PRJ_HOMEPAGE_URL "https://github.com/free0ON/otus_cpp_HW_03" CACHE INTERNAL 
 set(EMAIL_CONTACT "dmitrii.lozovoi@yandex.ru" CACHE INTERNAL "Email contact")
 set(TEST_NAME "test_all" CACHE INTERNAL "Test name")
 
-project(otus_algo_hw)
-
 file( GLOB SRC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp )
 message(STATUS "Found source files: " "${SRC} ")
 
 foreach( FILE ${SRC} )
     string( REPLACE ".cpp" "" TARGET ${FILE})
+    project(${TARGET})
     add_executable( ${TARGET} ${FILE})
     set_target_properties(${TARGET} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
     set_target_properties(${TARGET} PROPERTIES COMPILE_FLAGS "-fsanitize=address -fno-omit-frame-pointer")
