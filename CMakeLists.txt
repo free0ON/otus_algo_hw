@@ -10,10 +10,10 @@ set(TEST_NAME "test_all" CACHE INTERNAL "Test name")
 
 file( GLOB SRC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp )
 message(STATUS "Found source files: " "${SRC} ")
+project(otus_algo_hw)
 
 foreach( FILE ${SRC} )
     string( REPLACE ".cpp" "" TARGET ${FILE})
-    project(${TARGET})
     add_executable( ${TARGET} ${FILE})
     set_target_properties(${TARGET} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
     set_target_properties(${TARGET} PROPERTIES COMPILE_FLAGS "-fsanitize=address -fno-omit-frame-pointer")
