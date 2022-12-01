@@ -26,6 +26,9 @@ SENIOR
 
 #include <string>
 #include <iostream>
+#include <vector>
+#include <functional>
+#include <cmath>
 
 namespace ConsolePaint {
     enum ColorCode {
@@ -87,24 +90,64 @@ namespace ConsolePaint {
 
 int main()
 {
+    int MaxX = 25;
+    int MaxY = 25;
+    std::vector<std::function<bool(int, int)>> spells;
+    //JUNIOR
+    spells.push_back([](int x, int y){return x < y; }); //1
+    //MIDDLE
+    spells.push_back([](int x, int y){return x == y; }); //2
+    spells.push_back([MaxY](int x, int y){return x == MaxY - 1 - y; }); //3
+    spells.push_back([](int x, int y){return x + y < 30; }); //4
+    //SENIOR
+    spells.push_back([](int x, int y){return std::floor(y / 2) == x; }); // 5
+    spells.push_back([](int x, int y){return (x < 10 || y < 10); }); // 6
+    spells.push_back([](int x, int y){return x > 15 && y > 15; }); //7
+    spells.push_back([](int x, int y){return x * y == 0; }); //8
+    spells.push_back([](int x, int y){return std::abs(x - y) > 10; }); //9
+    spells.push_back([](int x, int y){return std::floor (y / (x + 1)) == 1; }); //10
+    spells.push_back([MaxX, MaxY](int x, int y){return x == 1 || y == 1 || x == MaxX - 2 || y == MaxY - 2; }); //11
+    spells.push_back([](int x, int y){return x*x + y*y <= 400; }); //12
+    spells.push_back([](int x, int y){return x + y >= 20 && x + y <= 28; }); //13
+    spells.push_back([](int x, int y){return x*y <= 100; }); //14
+    spells.push_back([](int x, int y){return std::abs(x - y) >= 10 && std::abs (x - y) <= 20; }); //15
+    spells.push_back([](int x, int y){return std::abs(x - 12) + std::abs(y - 12) < 10; }); //16
+    spells.push_back([](int x, int y){return std::sin(double(y)/3) <= double(x)/8 - 2; }); //17 ?
+    spells.push_back([](int x, int y){return x * y < x + y; }); //18
+    spells.push_back([MaxX, MaxY](int x, int y){return x * y == 0 || x == MaxX - 1 || y == MaxY - 1; }); //19
+    spells.push_back([](int x, int y){return (x + y) % 2 == 0; }); //20
+    spells.push_back([](int x, int y){return y % (x + 1) == 0; }); //21
+    spells.push_back([](int x, int y){return (x + y) % 3 == 0; }); //22
+    spells.push_back([](int x, int y){return x % 3 + y % 2 == 0; }); //23
+    spells.push_back([](int x, int y){return x == y || x == 24 - y; }); //24
+    spells.push_back([](int x, int y){return x % 6 == 0 || y % 6 == 0; }); //25
     using namespace ConsolePaint;
-    char OutSymbol = 0;
-    for(int x = 0; x < 25; ++x)
-    {
-        for(int y = 0; y < 25; ++y)
-        {
-            if (x < y){
-                std::cout << ColorModifier(ColorCode::FG_YELLOW)
-                << '#';
-            }
-            else{
-                std::cout << ColorModifier(ColorCode::FG_BLUE)
-                << '.';
-            }
-        }
+    uint SelectedSpell = 1;
+    while (SelectedSpell != 0) {
+        system("clear");
+        std::cout << ColorModifier(FG_RESET) << "Please enter number of spell: ";
+        std::cin >> SelectedSpell;
+        if(SelectedSpell == 1)
+            std::cout << ColorModifier(FG_GREEN) << "Welcome to Hogwarts, JUNIOR!" << std::endl;
+        if(SelectedSpell > 1 && SelectedSpell < 5)
+            std::cout << ColorModifier(FG_YELLOW) << "Welcome to Ascaban, MIDDLE!" << std::endl;
+        if(SelectedSpell >= 5 && SelectedSpell <= 15)
+            std::cout << ColorModifier(FG_BLACK) << "What a hall are you doing here, SENIOR?!" << std::endl;
+        if(SelectedSpell > 15)
+            std::cout << ColorModifier(FG_RED) << "Who are you?!" << std::endl;
 
-        std::cout << std::endl;
+        if(SelectedSpell == 0 || SelectedSpell > spells.size()) break;
+        for (int x = 0; x < MaxX; ++x) {
+            for (int y = 0; y < MaxY; ++y) {
+                    if (spells[SelectedSpell - 1](x,y))
+                        std::cout << ColorModifier(FG_YELLOW)
+                                  << '#';
+                    else
+                        std::cout << ColorModifier(FG_BLUE)
+                                  << '.';
+                }
+            std::cout << std::endl;
+            }
     }
-    getchar();
     return 0;
 }
