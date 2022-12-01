@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -rdynamic -fsanitize=address -fno-omit-frame-pointer CMakeFiles/otus_algo_hw_02.dir/otus_algo_hw_02.cpp.o -o otus_algo_hw_02 
