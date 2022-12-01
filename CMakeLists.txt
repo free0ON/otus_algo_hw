@@ -1,4 +1,13 @@
 cmake_minimum_required(VERSION 3.2)
+set(PRJ_NAME "otus_algo_hw" CACHE INTERNAL "Project name")
+set(PRJ_VERSION_MAJOR "0" CACHE INTERNAL "Minor version")
+set(PRJ_VERSION_MINOR "0" CACHE INTERNAL "Major version")
+set(PRJ_VERSION_PATCH "1" CACHE INTERNAL "Patch version")
+set(PRJ_DESCRIPTION "Allocator template class" CACHE INTERNAL "Project description")
+set(PRJ_HOMEPAGE_URL "https://github.com/free0ON/otus_cpp_HW_03" CACHE INTERNAL "Project URL")
+set(EMAIL_CONTACT "dmitrii.lozovoi@yandex.ru" CACHE INTERNAL "Email contact")
+set(TEST_NAME "test_all" CACHE INTERNAL "Test name")
+
 project(otus_algo_hw)
 
 file( GLOB SRC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp )
@@ -10,4 +19,13 @@ foreach( FILE ${SRC} )
     set_target_properties(${TARGET} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
     set_target_properties(${TARGET} PROPERTIES COMPILE_FLAGS "-fsanitize=address -fno-omit-frame-pointer")
     set_target_properties(${TARGET} PROPERTIES LINK_FLAGS "-fsanitize=address -fno-omit-frame-pointer")
+
+    install(TARGETS ${TARGET} RUNTIME DESTINATION bin)
+    set(CPACK_GENERATOR DEB)
+#    set(CPACK_PACKAGE_VERSION_MAJOR "${PRJ_VERSION_MAJOR}")
+#    set(CPACK_PACKAGE_VERSION_MINOR "${PRJ_VERSION_MINOR}")
+#    set(CPACK_PACKAGE_VERSION_PATCH "${PRJ_VERSION_PATCH}")
+    set(CPACK_PACKAGE_CONTACT "${EMAIL_CONTACT}")
+    include(CPack)
+
 endforeach( FILE ${SRC} )
