@@ -32,17 +32,16 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
 #      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
       run: |
-        cmake . -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
-#        \
-#        -DPRJ_NAME=${{ env.PRJ_NAME }} \
-#        -DPRJ_VERSION_MAJOR=${{ env.PRJ_VERSION_MAJOR }} \
-#        -DPRJ_VERSION_MINOR=${{ env.PRJ_VERSION_MINOR }} \
-#        -DPRJ_VERSION_PATCH=${{ env.PRJ_VERSION_PATCH }} \
-#        -DPRJ_DESCRIPTION=${{ env.PRJ_DESCRIPTION }} \
-#        -DPRJ_HOMEPAGE_URL=${{ env.PRJ_HOMEPAGE_URL }} \
-#        -DPRJ_CMAKE_MIN_VERSION=${{ env.PRJ_CMAKE_MIN_VERSION }} \
-#        -DEMAIL_CONTACT=${{ env.EMAIL_CONTACT }} \
-#        -DGOOGLE_TEST=${{ env.GOOGLE_TEST }}
+        cmake . -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
+        -DPRJ_NAME=${{ env.PRJ_NAME }} \
+        -DPRJ_VERSION_MAJOR=${{ env.PRJ_VERSION_MAJOR }} \
+        -DPRJ_VERSION_MINOR=${{ env.PRJ_VERSION_MINOR }} \
+        -DPRJ_VERSION_PATCH=${{ env.PRJ_VERSION_PATCH }} \
+        -DPRJ_DESCRIPTION=${{ env.PRJ_DESCRIPTION }} \
+        -DPRJ_HOMEPAGE_URL=${{ env.PRJ_HOMEPAGE_URL }} \
+        -DPRJ_CMAKE_MIN_VERSION=${{ env.PRJ_CMAKE_MIN_VERSION }} \
+        -DEMAIL_CONTACT=${{ env.EMAIL_CONTACT }} \
+        -DGOOGLE_TEST=${{ env.GOOGLE_TEST }}
 #    - name: Build
 #      # Build your program with the given configuration
 #      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
