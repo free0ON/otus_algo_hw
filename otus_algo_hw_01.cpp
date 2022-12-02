@@ -134,7 +134,7 @@ int main()
         if(SelectedSpell > 1 && SelectedSpell < 5)
             std::cout << ColorModifier(FG_YELLOW)
             << std::to_string(SelectedSpell)
-            << " Welcome to Ascaban, MIDDLE!" << std::endl;
+            << " Welcome to Askaban, MIDDLE!" << std::endl;
         if(SelectedSpell >= 5 && SelectedSpell <= 15)
             std::cout << ColorModifier(FG_BLACK)
             << std::to_string(SelectedSpell)
