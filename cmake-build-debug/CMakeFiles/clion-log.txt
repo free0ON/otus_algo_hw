@@ -1,5 +1,0 @@
-/snap/clion/209/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/dmitry/dev/prj/otus_algo/otus_algo_hw_01 -B /home/dmitry/dev/prj/otus_algo/otus_algo_hw_01/cmake-build-debug
--- Found source files: otus_algo_hw_01.cpp;otus_algo_hw_02.cpp 
--- Configuring done
--- Generating done
--- Build files have been written to: /home/dmitry/dev/prj/otus_algo/otus_algo_hw_01/cmake-build-debug
