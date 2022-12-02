@@ -128,13 +128,21 @@ int main()
         std::cin >> SelectedSpell;
         system("clear");
         if(SelectedSpell == 1)
-            std::cout << ColorModifier(FG_GREEN) << "Welcome to Hogwarts, JUNIOR!" << std::endl;
+            std::cout << ColorModifier(FG_GREEN)
+            << std::to_string(SelectedSpell)
+            <<" Welcome to Hogwarts, JUNIOR!" << std::endl;
         if(SelectedSpell > 1 && SelectedSpell < 5)
-            std::cout << ColorModifier(FG_YELLOW) << "Welcome to Ascaban, MIDDLE!" << std::endl;
+            std::cout << ColorModifier(FG_YELLOW)
+            << std::to_string(SelectedSpell)
+            << "Welcome to Ascaban, MIDDLE!" << std::endl;
         if(SelectedSpell >= 5 && SelectedSpell <= 15)
-            std::cout << ColorModifier(FG_BLACK) << "What a hall are you doing here, SENIOR?!" << std::endl;
+            std::cout << ColorModifier(FG_BLACK)
+            << std::to_string(SelectedSpell)
+            << "What a hall are you doing here, SENIOR?!" << std::endl;
         if(SelectedSpell > 15)
-            std::cout << ColorModifier(FG_RED) << "Who are you?!" << std::endl;
+            std::cout << ColorModifier(FG_RED)
+            << std::to_string(SelectedSpell)
+            << "Who are you?!" << std::endl;
 
         if(SelectedSpell == 0 || SelectedSpell > spells.size()) break;
         for (int x = 0; x < MaxX; ++x) {
