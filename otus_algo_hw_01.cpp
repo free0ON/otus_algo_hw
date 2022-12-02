@@ -124,9 +124,9 @@ int main()
     using namespace ConsolePaint;
     uint SelectedSpell = 1;
     while (SelectedSpell != 0) {
-        system("clear");
         std::cout << ColorModifier(FG_RESET) << "Please enter number of spell: ";
         std::cin >> SelectedSpell;
+        system("clear");
         if(SelectedSpell == 1)
             std::cout << ColorModifier(FG_GREEN) << "Welcome to Hogwarts, JUNIOR!" << std::endl;
         if(SelectedSpell > 1 && SelectedSpell < 5)
