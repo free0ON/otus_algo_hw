@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.2)
-set(PRJ_NAME "otus_algo_hw" CACHE INTERNAL "Project name")
+set(PRJ_NAME "otus_algo_hw_01" CACHE INTERNAL "Project name")
 set(PRJ_VERSION_MAJOR "0" CACHE INTERNAL "Minor version")
 set(PRJ_VERSION_MINOR "1" CACHE INTERNAL "Major version")
 set(PRJ_VERSION_PATCH "1" CACHE INTERNAL "Patch version")
