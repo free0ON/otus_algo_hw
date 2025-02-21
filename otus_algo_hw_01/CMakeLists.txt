@@ -9,7 +9,7 @@ set(EMAIL_CONTACT "dmitrii.lozovoi@yandex.ru" CACHE INTERNAL "Email contact")
 
 # file( GLOB SRC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp )
 # message(STATUS "Found source files: " "${SRC} ")
-project(otus_algo_hw)
+project(otus_algo_hw_01)
 
 # foreach( FILE ${SRC} )
 #     string( REPLACE ".cpp" "" TARGET ${FILE})
