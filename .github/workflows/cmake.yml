@@ -52,7 +52,7 @@ jobs:
 #      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
 #      run: ctest -C ${{env.BUILD_TYPE}}
     - name: Build package
-      run: cmake --build ./${{ env.PRJ_NAME }}  --target package
+      run: cmake --build ${{ ENV.PRJ_HOMEPAGE_URL }} --target package
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
