@@ -6,8 +6,8 @@ env:
   PRJ_VERSION_MINOR: 1
   PRJ_VERSION_PATCH: ${{ github.run_number }}
   PRJ_DESCRIPTION: "otus_aloritms_and_data_structures_course_homework" # description without spaces
-  PRJ_HOMEPAGE_URL: "${{ github.repositoryUrl }}//otus_algo_hw_01"
-  PRJ_PATH: "${{github.server_url}}//otus_algo_hw_01"
+  PRJ_HOMEPAGE_URL: "${{ github.repositoryUrl }}"
+  PRJ_PATH: "${{github.path}}//otus_algo_hw_01"
   PRJ_CMAKE_MIN_VERSION: 3.2
   EMAIL_CONTACT: dmitrii.lozovoi@yandex.ru
   GOOGLE_TEST: OFF
