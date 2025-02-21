@@ -6,7 +6,8 @@ env:
   PRJ_VERSION_MINOR: 1
   PRJ_VERSION_PATCH: ${{ github.run_number }}
   PRJ_DESCRIPTION: "otus_aloritms_and_data_structures_course_homework" # description without spaces
-  PRJ_HOMEPAGE_URL: "${{ github.server_url }}//${{ github.repository }}//otus_algo_hw_01"
+  PRJ_HOMEPAGE_URL: "${{ github.repository }}//otus_algo_hw_01"
+  PRJ_PATH: "${{github.server_url}}//otus_algo_hw_01"
   PRJ_CMAKE_MIN_VERSION: 3.2
   EMAIL_CONTACT: dmitrii.lozovoi@yandex.ru
   GOOGLE_TEST: OFF
@@ -32,7 +33,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
 #      run: cmake -B ${{github.workspace}}/${{ env.PRJ_NAME }}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
       run: |
-        cmake ./${{ env.PRJ_NAME }} -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
+        cmake ${{ env.PRJ_PATH }} -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
         -DPRJ_NAME=${{ env.PRJ_NAME }} \
         -DPRJ_VERSION_MAJOR=${{ env.PRJ_VERSION_MAJOR }} \
         -DPRJ_VERSION_MINOR=${{ env.PRJ_VERSION_MINOR }} \
@@ -52,7 +53,7 @@ jobs:
 #      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
 #      run: ctest -C ${{env.BUILD_TYPE}}
     - name: Build package
-      run: cmake --build ${{ ENV.PRJ_HOMEPAGE_URL }} --target package
+      run: cmake --build ${{ ENV.PRJ_PATH }} --target package
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
