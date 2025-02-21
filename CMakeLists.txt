@@ -1,0 +1,3 @@
+project(otus_algo_hw)
+add_subdirectory(otus_algo_hw_01)
+add_subdirectory(otus_algo_hw_02)
