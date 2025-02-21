@@ -33,8 +33,6 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
 #      run: cmake -B ${{github.workspace}}/${{ env.PRJ_NAME }}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
       run: |
-        cd ${{ env.PRJ_PATH }}
-        mkdir build 
         cmake ${{ env.PRJ_PATH }} -B ${{ env.PRJ_PATH }}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
         -DPRJ_NAME=${{ env.PRJ_NAME }} \
         -DPRJ_VERSION_MAJOR=${{ env.PRJ_VERSION_MAJOR }} \
@@ -75,6 +73,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{github.workspace}}/${{ env.PRJ_NAME }}/${{ env.PRJ_NAME }}-${{ env.PRJ_VERSION_MAJOR}}.${{ env.PRJ_VERSION_MINOR}}.${{ env.PRJ_VERSION_PATCH}}-Linux.deb
+        asset_path: ${{env.PRJ_PATH}}/${{ env.PRJ_NAME }}-${{ env.PRJ_VERSION_MAJOR}}.${{ env.PRJ_VERSION_MINOR}}.${{ env.PRJ_VERSION_PATCH}}-Linux.deb
         asset_name: ${{ env.PRJ_NAME }}-${{ env.PRJ_VERSION_MAJOR}}.${{ env.PRJ_VERSION_MINOR}}.${{ env.PRJ_VERSION_PATCH }}-Linux.deb
         asset_content_type: application/vnd.debian.binary-package
