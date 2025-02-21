@@ -1,12 +1,12 @@
 name: CMake
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  PRJ_NAME: "otus_algo_hw" # name without spaces
+  PRJ_NAME: "otus_algo_hw_01" # name without spaces
   PRJ_VERSION_MAJOR: 0
   PRJ_VERSION_MINOR: 1
   PRJ_VERSION_PATCH: ${{ github.run_number }}
   PRJ_DESCRIPTION: "otus_aloritms_and_data_structures_course_homework" # description without spaces
-  PRJ_HOMEPAGE_URL: "${{ github.server_url }}//${{ github.repository }}"
+  PRJ_HOMEPAGE_URL: "${{ github.server_url }}//${{ github.repository }}//otus_algo_hw_01"
   PRJ_CMAKE_MIN_VERSION: 3.2
   EMAIL_CONTACT: dmitrii.lozovoi@yandex.ru
   GOOGLE_TEST: OFF
@@ -30,7 +30,7 @@ jobs:
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
-#      run: cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+#      run: cmake -B ${{github.workspace}}/${{ env.PRJ_NAME }}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
       run: |
         cmake . -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
         -DPRJ_NAME=${{ env.PRJ_NAME }} \
@@ -44,10 +44,10 @@ jobs:
         -DGOOGLE_TEST=${{ env.GOOGLE_TEST }}
 #    - name: Build
 #      # Build your program with the given configuration
-#      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+#      run: cmake --build ${{github.workspace}}/${{ env.PRJ_NAME }}/build --config ${{env.BUILD_TYPE}}
 
 #    - name: Test
-#      working-directory: ${{github.workspace}}/build
+#      working-directory: ${{github.workspace}}/${{ env.PRJ_NAME }}/build
 #      # Execute tests defined by the CMake configuration.
 #      # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
 #      run: ctest -C ${{env.BUILD_TYPE}}
@@ -72,6 +72,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{github.workspace}}/${{ env.PRJ_NAME }}-${{ env.PRJ_VERSION_MAJOR}}.${{ env.PRJ_VERSION_MINOR}}.${{ env.PRJ_VERSION_PATCH}}-Linux.deb
+        asset_path: ${{github.workspace}}/${{ env.PRJ_NAME }}/${{ env.PRJ_NAME }}-${{ env.PRJ_VERSION_MAJOR}}.${{ env.PRJ_VERSION_MINOR}}.${{ env.PRJ_VERSION_PATCH}}-Linux.deb
         asset_name: ${{ env.PRJ_NAME }}-${{ env.PRJ_VERSION_MAJOR}}.${{ env.PRJ_VERSION_MINOR}}.${{ env.PRJ_VERSION_PATCH }}-Linux.deb
         asset_content_type: application/vnd.debian.binary-package
