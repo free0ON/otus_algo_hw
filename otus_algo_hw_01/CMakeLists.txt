@@ -9,7 +9,7 @@ set(EMAIL_CONTACT "dmitrii.lozovoi@yandex.ru" CACHE INTERNAL "Email contact")
 
 # file( GLOB SRC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp )
 # message(STATUS "Found source files: " "${SRC} ")
-project(${PRJ_NAME}
+project(${PRJ_NAME})
 
 add_executable(${PRJ_NAME} ${PRJ_NAME}.cpp)
 set_target_properties(${PRJ_NAME} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
