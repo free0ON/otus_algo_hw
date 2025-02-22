@@ -18,8 +18,11 @@ jobs:
     - name: Build and tests
       run: |
         cd ${{github.workspace}}/otus_algo_hw_02 
+        rustup update
+        cargo install cargo-deb
         cargo build --release
         cargo test --verbose
+        cargo deb
         
     - name: Create Release
       id: create_release

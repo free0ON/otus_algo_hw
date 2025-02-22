@@ -16,6 +16,19 @@ incremental = false
 codegen-units = 16
 rpath = false
 
+[package.metadata.deb]
+maintainer = "Dmitry Lozovoy <8333184@gmail.com>"
+copyright = "2025, Dmitry Lozovoy <8333184@gmail.com>"
+license-file = ["LICENSE", "4"]
+extended-description = "Happy tickets counts"
+depends = "$auto"
+section = "utility"
+priority = "optional"
+# assets = [
+#     # both syntaxes are equivalent:
+#     ["target/release/cargo-deb", "usr/bin/", "755"],
+#     { source = "README.md", dest = "usr/share/doc/cargo-deb/README", mode = "644"},
+# ]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
