@@ -14,6 +14,8 @@ jobs:
     name: Rust project - latest
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - run: cd ${{github.workspace}}/otus_algo_hw_02
-      - run: cargo test --verbose
+    - uses: actions/checkout@v3
+    - name: Run tests
+      run: |
+        cd ${{github.workspace}}/otus_algo_hw_02 
+        cargo test --verbose

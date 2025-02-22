@@ -69,7 +69,7 @@ jobs:
       if: (env.GOOGLE_TEST == 'ON')
       # Create release
     - name: Build package
-      run: cmake --build . --target package
+      run: cmake --build ${{ env.PRJ_PATH}}/build  --target package
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
