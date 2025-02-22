@@ -2,9 +2,9 @@ name: Cargo Build & Test
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "otus_algo_hw_02" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "otus_algo_hw_02" ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -15,5 +15,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      #- run: cargo build --verbose
+      - run: cd ${{github.workspace}}/otus_algo_hw_02
       - run: cargo test --verbose

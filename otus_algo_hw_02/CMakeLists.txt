@@ -2,7 +2,7 @@
 set(PRJ_CMAKE_MIN_VERSION 3.5 CACHE INTERNAL "CMake version")
 cmake_minimum_required(VERSION ${PRJ_CMAKE_MIN_VERSION})
 # Project information
-set(PRJ_NAME "happy_tickets" CACHE INTERNAL "Project name")
+set(PRJ_NAME "otus_algo_hw_02" CACHE INTERNAL "happy_tickets")
 set(PRJ_VERSION_MAJOR "0" CACHE INTERNAL "Minor version")
 set(PRJ_VERSION_MINOR "0" CACHE INTERNAL "Major version")
 set(PRJ_VERSION_PATCH "2" CACHE INTERNAL "Patch version")

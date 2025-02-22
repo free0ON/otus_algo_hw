@@ -1,21 +1,22 @@
 name: CMake CPP Build Test Deploy
 env:
  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
-  PRJ_NAME: "happy_tickets" # name without spaces
+  PRJ_NAME: "otus_algo_hw_02" # name without spaces
   PRJ_VERSION_MAJOR: 0
   PRJ_VERSION_MINOR: 0
   PRJ_VERSION_PATCH: ${{ github.run_number }}
   PRJ_DESCRIPTION: "happy_tikets_calculating" # description without spaces
   PRJ_HOMEPAGE_URL: "${{ github.server_url }}//${{ github.repository }}"
+  PRJ_PATH: "${{ github.workspace}}/otus_algo_hw_02"
   PRJ_CMAKE_MIN_VERSION: 3.5
   EMAIL_CONTACT: dmitrii.lozovoi@yandex.ru
   GOOGLE_TEST: ON
   BUILD_TYPE: Release
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "otus_algo_hw_02" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "otus_algo_hw_02" ]
 
 jobs:
   build:
@@ -41,7 +42,7 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       # -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
       run: |
-        cmake . -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
+        cmake ${{ env.PRJ_PATH }} -B ${{ env.PRJ_PATH}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} \
         -DPRJ_NAME=${{ env.PRJ_NAME }} \
         -DPRJ_VERSION_MAJOR=${{ env.PRJ_VERSION_MAJOR }} \
         -DPRJ_VERSION_MINOR=${{ env.PRJ_VERSION_MINOR }} \
@@ -56,7 +57,7 @@ jobs:
 
     - name: Build
       # Build your program with the given configuration
-      run: cmake --build . --config ${{env.BUILD_TYPE}}
+      run: cmake --build ${{ env.PRJ_PATH}}/build --config ${{env.BUILD_TYPE}}
       # Run test
     - name: Test
       working-directory: ${{github.workspace}}
@@ -88,6 +89,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ${{github.workspace}}/${{ env.PRJ_NAME }}-${{ env.PRJ_VERSION_MAJOR}}.${{ env.PRJ_VERSION_MINOR}}.${{ env.PRJ_VERSION_PATCH}}-Linux.deb
+        asset_path: ${{ env.PRJ_PATH }}/build/${{ env.PRJ_NAME }}-${{ env.PRJ_VERSION_MAJOR}}.${{ env.PRJ_VERSION_MINOR}}.${{ env.PRJ_VERSION_PATCH}}-Linux.deb
         asset_name: ${{ env.PRJ_NAME }}-${{ env.PRJ_VERSION_MAJOR}}.${{ env.PRJ_VERSION_MINOR}}.${{ env.PRJ_VERSION_PATCH }}-Linux.deb
         asset_content_type: application/vnd.debian.binary-package
