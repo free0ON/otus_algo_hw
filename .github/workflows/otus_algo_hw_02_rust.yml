@@ -17,11 +17,11 @@ jobs:
     - uses: actions/checkout@v3
     - name: Install cargo-deb
       run: |
-        cd ${{github.workspace}}/otus_algo_hw_02 
         rustup update
         cargo install cargo-deb
     - name: Build
       run: |
+        cd ${{github.workspace}}/otus_algo_hw_02 
         cargo build --release
         dir
     - name: Test

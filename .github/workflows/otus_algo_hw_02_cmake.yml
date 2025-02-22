@@ -68,7 +68,7 @@ jobs:
         dir
         cd ${{ env.PRJ_PATH }}
         dir
-        ctest -C ${{env.BUILD_TYPE}}
+        ctest -C ${{env.BUILD_TYPE}} --tests-from-file ${{ env.PRJ_PATH }}/build/test_all
       if: (env.GOOGLE_TEST == 'ON')
       # Create release
     - name: Build package
