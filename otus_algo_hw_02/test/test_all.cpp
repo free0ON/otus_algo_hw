@@ -36,7 +36,7 @@ TEST(tickets, FastTickets) {
     std::ifstream file;
     int in;
     unsigned long out;
-    std::string path = "1.Tickets/test.";
+    std::string path = "./1.Tickets/test.";
     for (size_t i = 0; i < 10; i++)
     {
         file.open(path + std::to_string(i) + ".in" );
