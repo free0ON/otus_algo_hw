@@ -15,14 +15,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Build and tests
+    - name: Install cargo-deb
       run: |
         cd ${{github.workspace}}/otus_algo_hw_02 
         rustup update
         cargo install cargo-deb
+    - name: Build
+      run: |
         cargo build --release
+        dir
+    - name: Test
+      run:  |
         cargo test --verbose
+        dir
+    - name: Create deb-package
+      run: |
         cargo deb
+        dir
         
     - name: Create Release
       id: create_release
