@@ -9,7 +9,10 @@ set(EMAIL_CONTACT "dmitrii.lozovoi@yandex.ru" CACHE INTERNAL "Email contact")
 
 # file( GLOB SRC RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *.cpp )
 # message(STATUS "Found source files: " "${SRC} ")
-project(otus_algo_hw_01)
+project(${PRJ_NAME}
+
+add_executable(${PRJ_NAME} ${PRJ_NAME}.cpp)
+set_target_properties(${PRJ_NAME} PROPERTIES CXX_STANDARD 17 CXX_STANDARD_REQUIRED ON)
 
 # foreach( FILE ${SRC} )
 #     string( REPLACE ".cpp" "" TARGET ${FILE})
@@ -27,7 +30,7 @@ project(otus_algo_hw_01)
 
 
 install(TARGETS ${PRJ_NAME} RUNTIME DESTINATION bin)
-set(CPACK_ABSOLUTE_DESTINATION_FILES ${PROJECT_SOURCE_DIR})
+# set(CPACK_ABSOLUTE_DESTINATION_FILES ${PROJECT_SOURCE_DIR})
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_VERSION_MAJOR "${PRJ_VERSION_MAJOR}")
 set(CPACK_PACKAGE_VERSION_MINOR "${PRJ_VERSION_MINOR}")
