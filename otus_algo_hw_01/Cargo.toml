@@ -1,0 +1,8 @@
+[package]
+name = "otus_algo_hw_01"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+colored = "2.0"
+clearscreen = "1.0" # Или другая актуальная версия
