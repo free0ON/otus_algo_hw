@@ -25,7 +25,7 @@ SENIOR
 ps. перенесено из другого репозитория 
 */
 
-use std::io;
+use std::io::{self, Write};
 use colored::*;
 use clearscreen;
 
@@ -46,16 +46,6 @@ impl Default for Spells {
 }
 
 impl Spells {
-    pub fn get_max_x(&self) -> i32
-    {
-        self.max_x
-    }
-
-    pub fn get_max_y(&self) -> i32
-    {
-        self.max_y
-    }
-    
     pub fn new(_max_x: &'static i32, _max_y: &'static i32) -> Self{
         Self {
             max_x : *_max_x,
@@ -96,14 +86,14 @@ impl Spells {
         let mut out_string: String = String::new();
         for x in 0 .. self.max_x {
             for y in 0 .. self.max_y {
-                if self.spells[i - 1](x, y) {
+                if self.spells[i](x, y) {
                     out_string.push('#');
                 }
                 else {
                     out_string.push('.');
                 }
             }
-            out_string.push('\n');
+            if x < (self.max_x - 1) { out_string.push('\n') };
         }
         return out_string; 
     }
@@ -120,7 +110,7 @@ impl Spells {
         }
         for x in 0 .. self.max_x {
             for y in 0 .. self.max_y {
-                if self.spells[i - 1](x, y) {
+                if self.spells[i](x, y) {
                     print!("{}", "#".yellow());
                 }
                 else {
@@ -130,11 +120,18 @@ impl Spells {
             println!("");
         } 
     }
+
+    pub fn save_spell_strings(&self)
+    {
+        for i in 0..25  {
+            let mut file = std::fs::File::create(format!("test/{}.txt",i+1)).expect("File create error");
+            file.write_all(self.get_spell_string(i).as_bytes()).expect("File write error");
+        }
+    }
 }
 
 
 fn main() {
-    
  
     let mut selected_spell: usize = 1;
     let spells = Spells::new(&25, &25);
@@ -163,17 +160,14 @@ mod tests {
     #[test]
     fn check_spells() {
         let test_spells = super::Spells::new(&25, &25);
-        let i = 25;
-        let path = "test\" + i.to_string() + ".txt";
-        match std::fs::read_to_string(path)  {
-            Ok(content) => assert_eq!(content, test_spells.get_spell_string(i)),
-            Err(e) => eprint!("{:?}", e)        
-        }
-        
-
-        for i in 0 .. 25
+        //test_spells.save_spell_strings();
+        for i in 0 ..25
         {
-            todo!();
+            match std::fs::read_to_string(format!("test/{}.txt", i + 1))  {
+                Ok(content) => assert_eq!(content, test_spells.get_spell_string(i)),
+                Err(e) => eprint!("{:?}", e),        
+            }
         }
     }
+    
 }
