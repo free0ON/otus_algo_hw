@@ -2,9 +2,9 @@ name: Cargo Build & Test
 
 on:
   push:
-    branches: [ "otus_algo_hw_02" ]
+    branches: [ "otus_algo_hw_03" ]
   pull_request:
-    branches: [ "otus_algo_hw_02" ]
+    branches: [ "otus_algo_hw_03" ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -21,7 +21,7 @@ jobs:
         cargo install cargo-deb
     - name: Build
       run: |
-        cd ${{github.workspace}}/otus_algo_hw_02 
+        cd ${{github.workspace}}/otus_algo_hw_03 
         cargo build --release
         dir
     - name: Test
